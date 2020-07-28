@@ -1,0 +1,37 @@
+---
+title: "Getting and Cleaning Data - W4_Course Project"
+output:
+  html_document:
+    toc: true
+    toc_depth: 4
+    toc_float: true
+    code_folding: 'hide'
+    self_contained: true
+  pdf_document:
+    toc: yes
+    toc_depth: 4
+    latex_engine: xelatex
+---
+
+```{r setup}
+knitr::opts_chunk$set(
+  warning = TRUE, # show warnings during codebook generation
+  message = TRUE, # show messages during codebook generation
+  error = TRUE, # do not interrupt codebook generation in case of errors,
+                # usually better for debugging
+  echo = TRUE  # show R code
+)
+ggplot2::theme_set(ggplot2::theme_bw())
+
+```
+
+
+* This is week 4's final course project for John Hopkin's Getting and Cleaning Data course. 
+* The submission includes an R script, run_analysis.R, which does the following:
+  + Download the dataset from website.
+  + Read both the train and test datasets and merge them based on x(measurements), y(activity) and subject participant.
+  + Load the data(x's) feature, activity info and extract only columns 'mean'(-mean) and 'standard'(-std). 
+  + Modify column names to descriptive
+  + Extract data by selected columns and merge x, y(activity) and subject data. Replace y(activity) column with descriptive names from activity labels. 
+  + Generate 'Tidy Dataset' that consists of the average (mean) of each variable for each subject and each activity. The result is shown in the file tidy_dataset.txt.
+
