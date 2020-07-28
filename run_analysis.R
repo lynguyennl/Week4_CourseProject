@@ -63,15 +63,15 @@ combinedData[["Activity"]] <- factor(combinedData[, Activity],
                                    labels = activityLabels[["activityName"]])
 
 # set Subject Number as factors 
-combinedData[["SujectNum"]] <- as.factor(combinedData[, SubjectNum])
+combinedData[["SubjectNum"]] <- as.factor(combinedData[, SubjectNum])
 
 # Melt data using reshape2 package
-meltedData <- melt(data = combinedData, id = c("SubjectNum", "Activity"))
+meltedData <- reshape2::melt(data = combinedData, id = c("SubjectNum", "Activity"))
 
 # Tidy data set with average of each variable for each activity and each subject using reshape2 package
-tidyData <- dcast(data = meltedData, SubjectNum + Activity ~ variable, fun.aggregate = mean)
+tidyData <- reshape2::dcast(data = meltedData, SubjectNum + Activity ~ variable, fun.aggregate = mean)
 
-data.table::fwrite(x = combinedData, file = "tidyData.txt", quote = FALSE)
+data.table::fwrite(x = combinedData, file = "tidyData.txt", quote = FALSE, row.names = FALSE)
 
 # Generate code book
 install.packages("codebook")
